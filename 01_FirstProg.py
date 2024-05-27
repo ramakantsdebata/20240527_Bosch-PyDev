@@ -1,3 +1,5 @@
+#!/usr/bin/env py
+
 # import math.sqrt
 from math import sqrt as msqr
 
