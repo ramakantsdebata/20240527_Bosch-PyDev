@@ -1,0 +1,4 @@
+Read
+Evaluate
+Process
+Loop back
