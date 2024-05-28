@@ -58,3 +58,15 @@ match opt:
         pass
     case _:
         pass
+
+
+str1 = "This is a random string that we want to search through."
+tokens = list(str1.split())
+
+for idx in len(tokens):
+    if tokens[idx] == "World":
+        print("Found World")
+        break
+else:                               # <-- This 'else' is part of the 'for' statement, not the 'if' statement
+    print("'World' not found")
+
