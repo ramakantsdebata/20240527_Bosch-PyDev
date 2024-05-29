@@ -4,3 +4,12 @@ Process
 Loop back
 
 https://forms.gle/ahdxASuE4pZeNPJG6
+
+
+## Virtual Environment #########################
+py -m venv <envName>
+source envName/Scripts/activate
+
+To exit the environment 
+deactivate
+#################################################
