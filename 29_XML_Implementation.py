@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from xml.dom import minidom
 
 # Parsing XML Data
 def parse_xml(file_path):
@@ -33,7 +34,19 @@ def add_new_book(file_path, new_book_data):
     ET.SubElement(genres, 'genre').text = new_book_data['genre']
 
     root.append(new_book)
+
+    rough_str = ET.tostring(root)
+    reparsed = minidom.parseString(rough_str)
+    prettyData = reparsed.toprettyxml(indent="    ")
+
+    root = ET.fromstring(prettyData)
     tree.write('updated_data.xml')
+
+    # root.append(new_book)
+    # root.append(prettyElem)
+    
+
+    # tree.write('updated_data.xml')
 
 if __name__ == "__main__":
     # Path to the XML file
