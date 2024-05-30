@@ -11,7 +11,7 @@ def parse_xml(file_path):
         author = book.find('author').text
         year = book.find('year').text
         price = book.find('price').text
-        genres = [genre.text     for genre in book.find('genres').findall('genre')]
+        genres = [genre.text for genre in book.find('genres').findall('genre')]
 
         print(f"Title: {title}")
         print(f"Author: {author}")
@@ -35,18 +35,14 @@ def add_new_book(file_path, new_book_data):
 
     root.append(new_book)
 
-    rough_str = ET.tostring(root)
-    reparsed = minidom.parseString(rough_str)
-    prettyData = reparsed.toprettyxml(indent="    ")
+    # Pretty print the XML
+    rough_string = ET.tostring(root, 'utf-8')
+    reparsed = minidom.parseString(rough_string)
+    pretty_data = reparsed.toprettyxml(indent="  ")
 
-    root = ET.fromstring(prettyData)
-    tree.write('updated_data.xml')
-
-    # root.append(new_book)
-    # root.append(prettyElem)
-    
-
-    # tree.write('updated_data.xml')
+    # Write the pretty-printed XML to file
+    with open('updated_data.xml', 'w') as f:
+        f.write(pretty_data)
 
 if __name__ == "__main__":
     # Path to the XML file
